@@ -1,0 +1,192 @@
+<?= $this->extend("layout/student") ?>
+<?= $this->section("title") ?>Student Panel<?= $this->endSection() ?>
+<?= $this->section("content") ?>
+<div class="card">
+    <div class="card-body">
+
+        <head>
+            <style>
+            table {
+                /* border: 0px; */
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            td,
+            th {
+                border: 0px;
+                text-align: left;
+                padding: 8px;
+            }
+            </style>
+        </head>
+
+        <fieldset>
+            <center><u>Student's FeedBack Form</u></center><br>
+            <div class="conatiner" id="quest1">
+                <fieldset>
+                    <tr>
+                        <th> Select Faculty :</th>
+                        <td>
+                            <select name="faculty_name" class="form-control">
+                                <option value="mad"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    </table>
+            </div>
+            <script>
+            // Select the checkbox that is selected
+            const selectedCheckbox = document.querySelector('#np');
+
+            // Add an event listener to the selected checkbox
+            selectedCheckbox.addEventListener('click', function() {
+                // Select all the checkboxes
+                const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+                // Loop through the list of checkboxes and disable them
+                for (const checkbox of checkboxes) {
+                    checkbox.disabled = true;
+                }
+            });
+            </script>
+<style>
+  .parent {
+  display: flex;
+  flex-direction: row;
+}
+
+.child {
+  width: 33.3333%; /* 100% / 3 */
+}
+
+</style>
+            <form action="save_feedback" method="post">
+                <div class="feedback_main" id="fb" style="">
+                    <div class="container" style="margin-top:50px">
+                    <h4 style="text-align:center;color:skyblue">Choose Problem</h4>
+                        <div class="parent">
+                            
+                            <div class="child">
+                                <input type="checkbox" name="feedback[]" id="np"
+                                    value="low_voice">&nbsp;&nbsp;&nbsp;&nbsp;No Problem<br>
+                                <input type="checkbox" name="feedback[]" id="low_voice"
+                                    value="low_voice">&nbsp;&nbsp;&nbsp;&nbsp;Low Voice<br>
+                                <input type="checkbox" name="feedback[]" id="improper_board_writing"
+                                    value="improper_board_writing">&nbsp;&nbsp;&nbsp;&nbsp;Improper Board Writing<br>
+                                <input type="checkbox" name="feedback[]" id="fast_syllabus"
+                                    value="fast_syllabus">&nbsp;&nbsp;&nbsp;&nbsp;Fast Syllabus Cover<br>
+                            </div>
+                            <div class="child">
+                                <input type="checkbox" name="feedback[]" id="poor_english"
+                                    value="poor_english">&nbsp;&nbsp;&nbsp;&nbsp;Poor English<br>
+                                <input type="checkbox" name="feedback[]" id="poor_prep"
+                                    value="poor_prep">&nbsp;&nbsp;&nbsp;&nbsp;Poor Preparation<br>
+                                <input type="checkbox" name="feedback[]" id="less_syll"
+                                    value="less_syll">&nbsp;&nbsp;&nbsp;&nbsp;Less Syllabus Cover<br>
+                                <input type="checkbox" name="feedback[]" id="lack_prep"
+                                    value="lack_prep">&nbsp;&nbsp;&nbsp;&nbsp;Lack of Interaction<br>
+                            </div>
+                            <div class="child">
+                                <input type="checkbox" name="feedback[]" id="wrong_pro"
+                                    value="wrong_pro">&nbsp;&nbsp;&nbsp;&nbsp;Wrong Pronunciation<br>
+                                <input type="checkbox" name="feedback[]" id="doubt"
+                                    value="doubt">&nbsp;&nbsp;&nbsp;&nbsp;Doubt not Cleared<br>
+                                <input type="checkbox" name="feedback[]" id="less_exp"
+                                    value="less_exp">&nbsp;&nbsp;&nbsp;&nbsp;Less Explanation<br>
+                                <input type="checkbox" name="feedback[]" id="fast_speaking"
+                                    value="fast_speaking">&nbsp;&nbsp;&nbsp;&nbsp;Fast Speaking<br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container2" style="margin-top:50px">
+                        <table>
+                            <h4 style="text-align:center;color:skyblue">Course Material</h4>
+                            <table>
+
+                                <tr>
+                                    <td>University Question Paper Set Given</td>
+                                    <td><input type="radio" name="quest1" value="">Yes</td>
+                                    <td><input type="radio" name="quest1" value="">No</td>
+                                </tr>
+                                <tr>
+                                    <td>Question bank Given</td>
+                                    <td><input type="radio" name="quest2" value="">Yes</td>
+                                    <td><input type="radio" name="quest2" value="">No</td>
+                                </tr>
+                                <tr>
+                                    <td>Notes Given</td>
+                                    <td><input type="radio" name="quest3" value="">Yes</td>
+                                    <td><input type="radio" name="quest3" value="">No</td>
+                                </tr>
+                            </table>
+                    </div>
+
+                    <div class="container3" style="margin-top:50px">
+                        <h4 style="text-align:center;color:skyblue;">Comments for Practical </h4>
+                        <center>
+                            <textarea name="quest10" rows="2" cols="60" id="comments"
+                                style="font-family:sans-serif;font-size:1.2em;">
+
+    </textarea>
+                        </center>
+                        <div class="container3" style="margin-top:50px">
+                            <h4 style="text-align:center;color:skyblue;">Any Suggestion</h4>
+                            <center>
+                                <textarea name="quest11" rows="5" cols="60" id="comments"
+                                    style="font-family:sans-serif;font-size:1.2em;">
+
+    </textarea>
+                            </center>
+
+
+                            <p align="center">
+                                <button type="submit"
+                                    style="font-size:7pt;color:white;background-color:brown;border:2px solid #336600;padding:7px"
+                                    name="sub">Submitt</button>
+                            </p>
+
+                        </div>
+
+            </form>
+            <script>
+            const mainCheckbox = document.getElementById('np');
+
+
+            mainCheckbox.onclick = function() {
+
+                const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+
+                for (let i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i] !== mainCheckbox) {
+                        checkboxes[i].disabled = mainCheckbox.checked;
+                    }
+                }
+            }
+            </script>
+        </fieldset>
+    </div>
+
+</div>
+<!--close content_item-->
+</div>
+<!--close content-->
+
+</div>
+<!--close site_content-->
+
+
+</div>
+<!--close main-->
+</form>
+</div>
+
+</div>
+</div>
+<?= $this->endSection() ?>
+
+<?php foreach($subject as $f) : ?>
+<option value=""><?= $f['fullForm']; ?></option>
+<?php endforeach ?>
